@@ -1,3 +1,2 @@
 # Crypto
-Crypto trading scripts
-![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
+![Alt Text](https://github.com/justacurley/Crypto/blob/master/LoLGif.gif)
