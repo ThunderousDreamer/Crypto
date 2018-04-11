@@ -154,8 +154,8 @@ function Set-LoLSellOrders
   
   #Get market information
   $marketInfo = Get-Market -exch_code ($moreExch.exch_code) -xApiKey $xApiKey -xApiSec $xApiSec
-  #echo $marketInfo
-  $mktID = ($marketInfo | Where-Object {$_.mkt_name -eq $Market}) | Select-Object -ExpandProperty mkt_id
+  $mktID = ($marketInfo | Where-Object {$_.mkt_name -eq $Market -And $_.exch_id -eq $exch_id}) | Select-Object -ExpandProperty mkt_id
+
   if ($mktID.Count -gt 1)
   {
     $mktID = $mktID[0] 
