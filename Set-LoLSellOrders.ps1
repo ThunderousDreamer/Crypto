@@ -1,4 +1,4 @@
-﻿<#
+<#
     #Requires -Version 3.0
     .Synopsis
     Places sell half on a double orders through coinigy
@@ -11,6 +11,7 @@
     .NOTES
     20180311 TODO add stop limit orders and SuperJay's sell 25% x2x3
 #>
+
 function Set-LoLSellOrders
 {
   [CmdletBinding()]
@@ -153,8 +154,12 @@ function Set-LoLSellOrders
   
   #Get market information
   $marketInfo = Get-Market -exch_code ($moreExch.exch_code) -xApiKey $xApiKey -xApiSec $xApiSec
+  #echo $marketInfo
   $mktID = ($marketInfo | Where-Object {$_.mkt_name -eq $Market}) | Select-Object -ExpandProperty mkt_id
-  $mktID = $mktID[0]
+  if ($mktID.Count -gt 1)
+  {
+    $mktID = $mktID[0] 
+  }
   
   #Set up sell orders
   $allOrders = @()
